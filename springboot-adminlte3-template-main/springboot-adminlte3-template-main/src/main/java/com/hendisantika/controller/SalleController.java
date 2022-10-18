@@ -56,7 +56,7 @@ public class SalleController {
 
 	@GetMapping("/add")
 	public String add(Model model) {
-
+		System.out.println("okfjhgofdjogkjfdjg");
 		model.addAttribute("salle", new Salle());
 		return "salle/form";
 
@@ -64,8 +64,8 @@ public class SalleController {
 
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable Long id, Model model) {
-
-		model.addAttribute("personne", salleService.get(id));
+		System.out.println("EditEditEditEditEditEdit");
+		model.addAttribute("salle", salleService.get(id));
 		return "salle/form";
 
 	}
@@ -75,7 +75,7 @@ public class SalleController {
 
 		Salle save = salleService.save(salle);
 		ra.addFlashAttribute("successFlash", "Salle Ajoutée avec succès");
-		return "redirect:/salle";
+		return "redirect:/salle/1";
 
 	}
 
@@ -83,14 +83,14 @@ public class SalleController {
 	public String delete(@PathVariable Long id) {
 
 		salleService.delete(id);
-		return "redirect:/salle";
+		return "redirect:/salle/1";
 
 	}
 
 	@GetMapping("/show/list")
 	public String showSalles() {
-
-		return "/salle/list";
+		System.out.println("fgdfgfdgfdgfdgfdgfdg");
+		return "salle/list";
 
 	}
 

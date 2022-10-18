@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{shared/layout}">
 <head>
-    <title>Traitement d'une Genre</title>
+    <title>Traitement d'une Salle</title>
 </head>
 <body>
 <section layout:fragment="header">
-    <h1>Traitement d'une Genre</h1>
+    <h1>Traitement d'une Salle</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Ajouter Genre</li>
+        <li class="active">Ajouter Salle</li>
     </ol>
 </section>
 <div layout:fragment="content">
@@ -17,16 +17,18 @@
         <div class="box-header with-border">
             <h3 class="box-title">Formulaire d'ajout/Modification</h3>
             <div class="box-tools pull-right">
-                <a href="/parametre/genre/1" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
+                <a href="/salle/1" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
             </div>
         </div>
-        <form data-toggle="validator" role="form" th:object="${genre}" th:action="@{/parametre/genre/save}" method="post">
+        <form data-toggle="validator" role="form" th:object="${salle}" th:action="@{/salle/save}" method="post">
             <div class="box-body">
                 <input type="hidden" th:field="*{id}"/>
 
                 <div class="form-group">
-                    <label for="libelle">Libellé</label>
-                    <input type="text" required="true" class="form-control" th:field="*{libelle}" id="libelle" />
+                    <label for="libelle">Numero</label>
+                    <input type="text" required="true" class="form-control" th:field="*{numero}" id="numero" />
+                    <label for="libelle">Capacite</label>
+                    <input type="text" required="true" class="form-control" th:field="*{capacite}" id="capacite" />
                 </div>
             </div>
             <div class="box-footer">
