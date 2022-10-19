@@ -30,9 +30,7 @@ public class ParametreController {
 
 
 	    @Autowired
-	    public void setGenreService(GenreService genreService) {
-	        this.genreService = genreService;
-	    }
+	    public void setGenreService(GenreService genreService) {this.genreService = genreService; }
 	    
 	    @Autowired
 	    public void setNationaliteService(NationaliteService nationaliteService) {
@@ -58,7 +56,6 @@ public class ParametreController {
 	    
 	    @GetMapping(value = "nationalite/{pageNumber}")
 	    public String listNationalites(@PathVariable Integer pageNumber, Model model) {
-	    	System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
 	        Page<Nationalite> page = nationaliteService.getList(pageNumber);
 	        System.out.println("Taille de la page : ");
 	        int current = page.getNumber() + 1;
