@@ -55,7 +55,10 @@
         <div class="box-footer clearfix">
             <ul class="pagination pagination-sm no-margin pull-right">
                 <li class="ml-2 mr-2"><a href="/personne/1"><i class="fa fa-fast-backward"></i></a></li>
-                <li class="ml-2 mr-2" th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">    <a th:href="${'/personne/' + p}" th:text="${p + ' '}"></a></li>
+                <li class="ml-2 mr-2" th:each="p : ${#numbers.sequence(1, endIndex/beginIndex)}" th:class="${p == currentIndex} ? 'active' : ''">
+                    <a th:if="${p > 0}" th:href="${'/personne/' + p}" th:text="${p}" ></a>
+                    <span th:if="${p < endIndex}" >  || </span>
+                </li>
                 <li class="ml-2 mr-2"><a th:href="${'/personne/' + endIndex}"><i class="fa fa-fast-forward"></i></a></li>
             </ul>
         </div>
