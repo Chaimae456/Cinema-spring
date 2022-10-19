@@ -22,15 +22,15 @@ public class AdminPageController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping({"/user/list", "/admin/user"})
-    public String listUser() {
-        return "user-list";
-    }
+//    @GetMapping({"/user/list", "/admin/user"})
+//    public String listUser() {
+//        return "user-list";
+//    }
 
-    @GetMapping("/user/list2")
+    @GetMapping("/user/list")
     public String listUser2(Model model) {
         model.addAttribute("users", userRepository.findAll());
-        return "user-list2";
+        return "user-list";
     }
 
     @GetMapping("/user/add")
