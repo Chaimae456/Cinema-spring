@@ -64,8 +64,10 @@ public class SalleController {
 
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable Long id, Model model) {
+
 		model.addAttribute("personne", salleService.get(id));
 		return "salle/form";
+
 	}
 
 	@PostMapping(value = "/save")
