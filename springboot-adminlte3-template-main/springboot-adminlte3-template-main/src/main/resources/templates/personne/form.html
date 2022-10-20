@@ -9,7 +9,7 @@
     <h1>Ajouter Acteur/Realisateur</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Ajouter Acteur/Realisateur</li>
+        <li class="active">Ajouter z</li>
     </ol>
 </section>
 <div layout:fragment="content">
@@ -20,7 +20,7 @@
                 <a href="/personne" type="button" class="btn btn-box-tool"><i class="fa fa-list-ul"></i></a>
             </div>
         </div>
-        <form data-toggle="validator" role="form" th:object="${personne}" 
+        <form data-toggle="validator" role="form" th:object="${personne}"
         	th:action="@{/personne/save}" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <input type="hidden" th:field="*{id}"/>

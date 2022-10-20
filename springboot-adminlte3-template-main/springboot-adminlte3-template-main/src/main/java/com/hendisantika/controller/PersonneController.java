@@ -99,8 +99,7 @@ public class PersonneController {
             
             try {
             	String uuid = UUID.randomUUID().toString();
-            	String uploadDir = UPLOAD_DIR;
-            	FileUploadUtil.saveFile(uploadDir, uuid+fileName, file);
+              FileUploadUtil.saveFile(UPLOAD_DIR, uuid+fileName, file);
             	personne.setPhoto("/photos/personnes/"+uuid+fileName);
             } catch (IOException e) {
             	System.out.println("#####\nUpload Error:\n"+e);

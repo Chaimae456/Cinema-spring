@@ -9,11 +9,22 @@ import org.springframework.stereotype.Service;
 import com.hendisantika.entity.Personne;
 import com.hendisantika.repository.PersonneRepository;
 
+import java.util.List;
+
 @Service
 public class PersonneService extends AbstractService<Personne, Long> {
 
     @Autowired
     private PersonneRepository personneRepository;
+
+    public List<Personne> getAllActeur(){
+        System.out.println(personneRepository.findByTypePersonne(Personne.TypePersonne.ACTEUR).size()+"***********************************************************************");
+        return personneRepository.findByTypePersonne(Personne.TypePersonne.ACTEUR);
+    }
+    public List<Personne> getAllRealisateur(){
+        return personneRepository.findByTypePersonne(Personne.TypePersonne.REALISATEUR);
+    }
+
 
     @Override
     protected JpaRepository<Personne, Long> getRepository() {

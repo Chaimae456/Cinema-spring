@@ -19,6 +19,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Getter
@@ -51,7 +53,8 @@ public class Film extends AbstractModel<Long>{
     @JoinColumn(name="DIRECTOR_ID")
     private Personne realisateur;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
     @JoinTable(
       name="FILM_ACTEUR",
       joinColumns=@JoinColumn(name="ACTOR_ID", referencedColumnName="ID"),
