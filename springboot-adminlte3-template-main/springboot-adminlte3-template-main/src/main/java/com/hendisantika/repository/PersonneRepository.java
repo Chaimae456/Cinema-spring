@@ -2,6 +2,7 @@ package com.hendisantika.repository;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,7 @@ import com.hendisantika.entity.Personne.TypePersonne;
 @Repository
 public interface PersonneRepository extends JpaRepository<Personne, Long> {
 	Page<Personne> findByTypePersonne(@RequestParam("typePersonne") TypePersonne typePersonne, Pageable pageable);
+	List<Personne> findByTypePersonne(TypePersonne typePersonne);
 	Page<Personne> findByDateNaissanceGreaterThanEqual(@RequestParam("dateNs") Date dateNs, Pageable pageable);
 	Page<Personne> findByNomContainingOrPrenomContaining(@RequestParam("nom") String nom,@RequestParam("prenom") String prenom, Pageable pageable);
 }

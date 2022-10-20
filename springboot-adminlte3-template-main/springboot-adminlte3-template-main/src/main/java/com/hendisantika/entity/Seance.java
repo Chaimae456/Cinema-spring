@@ -31,11 +31,11 @@ public class Seance extends AbstractModel<Long>{
 	@Column(name = "heure_fin")
     private java.sql.Time heureFin;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Film_ID")
     private Film film;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="salle_ID")
     private Salle salle;
 }
