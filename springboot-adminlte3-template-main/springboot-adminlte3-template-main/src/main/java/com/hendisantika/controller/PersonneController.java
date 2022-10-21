@@ -126,7 +126,8 @@ public class PersonneController {
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable Long id, Model model) {
         model.addAttribute("personne", personneService.get(id));
-        return "personne/details";
+        model.addAttribute("listeNationalites", natService.getListAll());
+        return "personne/formdetail";
 
     }
     

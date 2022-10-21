@@ -24,7 +24,7 @@ public class SeanceController {
 	
 	@Autowired
 	public void setSalleService(SalleService salleService) {
-		this.salleseance = salleService;
+		this.salleservice = salleService;
 	}
 	
 	@Autowired
