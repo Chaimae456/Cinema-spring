@@ -31,11 +31,11 @@
                 </div>
                 <div class="form-group">
                     <label for="Prenom">Durèe</label>
-                    <input type="text" required="true" class="form-control" th:field="*{duree}" id="Prenom" />
+                    <input type="time" required="true" class="form-control" th:field="*{duree}" id="Prenom" />
                 </div>
                 <div class="form-group">
                     <label for="Anne">Anne</label>
-                    <input type="text" required="true" class="form-control" th:field="*{duree}" id="Anne" />
+                    <input type="text" required="true" class="form-control" th:field="*{annee}" id="Anne" />
                 </div>
 <!--                <div class="form-group">-->
 <!--                    <label for="dateNaissance">addedDate</label>-->
@@ -64,7 +64,7 @@
                 <div class="form-group">
 <!--                    <label th:text="${#lists.size(listeActeur)}"></label>-->
                     <label for="typeActeur">Les Acteurs</label>
-                    <select th:field="*{acteurs}" id="typeActeur" class="form-control" multiple>
+                    <select th:field="*{acteurs}" id="typeActeur" class="form-control" multiple required>
                         <option th:each="act : ${listeActeur}"
                                 th:value="${act.id}" th:text="${act.nom+' '+act.prenom}"
                                 th:selected="(${acteurs} != null)?${act.id} == ${acteurs.id} : false">

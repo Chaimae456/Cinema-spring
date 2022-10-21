@@ -77,14 +77,14 @@ public class MovieController {
 
     }
 
-private void parametersToPass(Model model){
-    model.addAttribute("listeNationalites", natService.getListAll());
-    model.addAttribute("listeGenres", genreService.getListAll());
-    model.addAttribute("listeRealisateur", personneService.getAllRealisateur());
-    model.addAttribute("listeActeur", personneService.getAllActeur());
+    private void parametersToPass(Model model){
+        model.addAttribute("listeNationalites", natService.getListAll());
+        model.addAttribute("listeGenres", genreService.getListAll());
+        model.addAttribute("listeRealisateur", personneService.getAllRealisateur());
+        model.addAttribute("listeActeur", personneService.getAllActeur());
 //    model.addAttribute("listeSeance", seanceService.getListAll());
 
-}
+    }
 
     @GetMapping("/add")
     public String add(Model model) {
@@ -98,32 +98,15 @@ private void parametersToPass(Model model){
     public String edit(@PathVariable Long id, Model model) {
         parametersToPass(model);
         model.addAttribute("movie", movieService.get(id));
-        System.out.println(movieService.get(id).getAnnee());
-        System.out.println(movieService.get(id).getTitre());
-        System.out.println(movieService.get(id).getDuree());
-        System.out.println(movieService.get(id).getNationalite());
-        System.out.println(movieService.get(id).getId());
         return "movies/form";
     }
 
     @PostMapping(value = "/save")
-//    public String save(@RequestParam("file") MultipartFile file,Film movie, final RedirectAttributes ra) {
     public String save(Film movie, final RedirectAttributes ra) {
-//      if (!file.isEmpty()) {
-//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//        try {
-//          String uuid = UUID.randomUUID().toString();
-//          FileUploadUtil.saveFile(UPLOAD_DIR, uuid+fileName, file);
-//          movie.setPhoto("/photos/personnes/"+uuid+fileName);
-//        } catch (IOException e) {
-//          System.out.println("#####\nUpload Error:\n"+e);
-//          e.printStackTrace();
-//        }
-//      }
-
-      Film save = movieService.save(movie);
-      ra.addFlashAttribute("successFlash", "Movie Ajoutée avec succès");
-      return "redirect:/movies";
+//        System.out.println(movie.getActeurs().size());
+        Film save = movieService.save(movie);
+        ra.addFlashAttribute("successFlash", "Movie Ajoutée avec succès");
+        return "redirect:/movies";
 
     }
 

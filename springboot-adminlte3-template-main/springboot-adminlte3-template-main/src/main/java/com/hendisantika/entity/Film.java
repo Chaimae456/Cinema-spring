@@ -3,14 +3,7 @@ package com.hendisantika.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -19,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Getter
@@ -33,7 +28,9 @@ public class Film extends AbstractModel<Long>{
     private String titre;
 	
 	@Column(nullable = false)
-    private int duree;
+    @Temporal(TemporalType.TIME)
+    @DateTimeFormat(pattern = "HH:mm")
+    private Date duree;
 
 	@Column(nullable = false)
     private int annee;
@@ -51,7 +48,7 @@ public class Film extends AbstractModel<Long>{
     @JoinColumn(name="DIRECTOR_ID")
     private Personne realisateur;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
       name="FILM_ACTEUR",
       joinColumns=@JoinColumn(name="ACTOR_ID", referencedColumnName="ID"),
