@@ -66,7 +66,7 @@ public class SeanceController {
         model.addAttribute("seance", new Seance());
         model.addAttribute("listeFilms", salleservice.getListAll());
         model.addAttribute("listeSalle", movieservice.getListAll());
-        return "personne/form";
+        return "seance/form";
 
     }
     
@@ -75,10 +75,8 @@ public class SeanceController {
     
     @GetMapping("/delete/{id}")
 	public String delete(@PathVariable Long id) {
-
 		seanceservice.delete(id);
 		return "redirect:/seance/1";
-
 	}
     
     
