@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.hendisantika.config.MovieService;
 import com.hendisantika.config.SalleService;
 import com.hendisantika.config.SeanceService;
-import com.hendisantika.entity.Personne;
 import com.hendisantika.entity.Seance;
 
 @Controller
@@ -64,8 +63,9 @@ public class SeanceController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("seance", new Seance());
-        model.addAttribute("listeFilms", salleservice.getListAll());
-        model.addAttribute("listeSalle", movieservice.getListAll());
+        System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
+      // model.addAttribute("listeFilms", salleservice.getListAll());
+      model.addAttribute("listeSalle", salleservice.getListAll());
         return "seance/form";
 
     }
@@ -79,7 +79,15 @@ public class SeanceController {
 		return "redirect:/seance/1";
 	}
     
-    
+
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable Long id, Model model) {
+		model.addAttribute("seance", seanceservice.get(id));
+		model.addAttribute("films",movieservice.getListAll());
+		model.addAttribute("salles",salleservice.getListAll());
+		 return "seance/form";
+	}
+	
     
     
 }
