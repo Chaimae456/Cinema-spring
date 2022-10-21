@@ -51,7 +51,7 @@ public class Film extends AbstractModel<Long>{
     @JoinColumn(name="DIRECTOR_ID")
     private Personne realisateur;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
       name="FILM_ACTEUR",
       joinColumns=@JoinColumn(name="ACTOR_ID", referencedColumnName="ID"),
