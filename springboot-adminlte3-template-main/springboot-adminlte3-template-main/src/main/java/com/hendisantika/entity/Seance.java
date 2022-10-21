@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,13 +27,19 @@ public class Seance extends AbstractModel<Long>{
 	private static final long serialVersionUID = 6992208427439369561L;
 
 	@Column(name = "date_projection")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateProjection;
 	
 	@Column(name = "heure_debut")
-    private java.sql.Time heureDebut;
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
+    private Date heureDebut;
 	
 	@Column(name = "heure_fin")
-    private java.sql.Time heureFin;
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
+    private Date heureFin;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Film_ID")

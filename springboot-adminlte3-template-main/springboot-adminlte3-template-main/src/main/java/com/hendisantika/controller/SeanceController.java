@@ -24,7 +24,7 @@ public class SeanceController {
 	
 	@Autowired
 	public void setSalleService(SalleService salleService) {
-		this.salleseance = salleService;
+		this.salleservice = salleService;
 	}
 	
 	@Autowired
@@ -66,7 +66,7 @@ public class SeanceController {
         model.addAttribute("seance", new Seance());
         model.addAttribute("listeFilms", salleservice.getListAll());
         model.addAttribute("listeSalle", movieservice.getListAll());
-        return "personne/form";
+        return "seance/form";
 
     }
     
