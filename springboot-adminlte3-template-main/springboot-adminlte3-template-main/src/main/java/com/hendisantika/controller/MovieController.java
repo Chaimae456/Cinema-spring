@@ -103,6 +103,7 @@ public class MovieController {
 
     @PostMapping(value = "/save")
     public String save(Film movie, final RedirectAttributes ra) {
+//        System.out.println(movie.getActeurs().size());
         Film save = movieService.save(movie);
         ra.addFlashAttribute("successFlash", "Movie Ajoutée avec succès");
         return "redirect:/movies";
