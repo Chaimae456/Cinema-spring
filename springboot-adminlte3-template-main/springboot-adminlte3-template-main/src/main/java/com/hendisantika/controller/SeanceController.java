@@ -66,7 +66,7 @@ public class SeanceController {
         model.addAttribute("seance", new Seance());
         model.addAttribute("listeFilms", salleservice.getListAll());
         model.addAttribute("listeSalle", movieservice.getListAll());
-        return "seance/form";
+        return "personne/form";
 
     }
     
