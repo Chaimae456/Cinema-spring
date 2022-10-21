@@ -137,8 +137,13 @@ private void parametersToPass(Model model){
 
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("movie", movieService.get(id));
-        return "movies/details";
+        model.addAttribute("film", movieService.get(id));
+        model.addAttribute("listeNationalites", natService.getListAll());
+        model.addAttribute("listeGenres", genreService.getListAll());
+        model.addAttribute("listeRealisateur", personneService.getAllRealisateur());
+        model.addAttribute("listeActeur", personneService.getAllActeur());
+        
+        return "movies/formdetail";
 
     }
 //
