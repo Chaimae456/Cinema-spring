@@ -120,13 +120,10 @@ public class MovieController {
 
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable Long id, Model model) {
-        model.addAttribute("film", movieService.get(id));
-        model.addAttribute("listeNationalites", natService.getListAll());
-        model.addAttribute("listeGenres", genreService.getListAll());
-        model.addAttribute("listeRealisateur", personneService.getAllRealisateur());
-        model.addAttribute("listeActeur", personneService.getAllActeur());
+        model.addAttribute("movie", movieService.get(id));
+
         
-        return "movies/formdetail";
+        return "movies/details";
 
     }
 //

@@ -35,7 +35,7 @@
 					</tr>
 					<tr th:each="movie : ${listMovies}">
 						<td th:inline="text">[[${movie.id}]] <a
-							th:href="${'/movies/formdetail/' + movie.id}"> <i
+							th:href="${'/movies/details/' + movie.id}"> <i
 								class="fa fa-info-circle"></i>
 						</a>
 						</td>

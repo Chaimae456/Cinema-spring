@@ -38,7 +38,7 @@
                 <h1>detail Acteur/Realisateur</h1>
             </section>
     <form data-toggle="validator" role="form" th:object="${personne}"  th:action="@{/personne/save}" method="post"  enctype="multipart/form-data">
-    <input type="hidden" th:field="*{id}" />
+    <input type="hidden" th:text="*{id}" />
         
                 <div class="column">
                     
@@ -50,7 +50,7 @@
                         <table  class="table table-striped">    
                         <tr><td>nom:</td>
                         <td><label for="Nom">Nom</label>
-                    <input type="text" required="true" class="form-control" th:field="*{nom}" id="Nom" /></td>
+                    <label class="form-control" th:text="*{nom}" id="Nom" /></td>
                         </tr>                
                         <tr><td>prenom:</td>
                         <td> <label for="Prenom">Prenom</label>
@@ -58,30 +58,38 @@
                         </tr>        
                         <tr><td>date de naissance:</td>
                         <td><label for="dateNaissance">Date de Naissance</label>
-                    <input type="date" value="1974-08-13" required="true" class="form-control" th:field="*{dateNaissance}" id="dateNaissance" /></td>
+                    <label class="form-control" th:text="*{dateNaissance}" id="dateNaissance" /></td>
                         </tr>                    
                         <tr><td>type:</td>
                         <td> <label for="typePersonne">Type</label>
-                     <select th:field="*{typePersonne}" id="typePersonne" class="form-control">
-                    <option th:value="ACTEUR" th:text="ACTEUR" th:selected="ACTEUR"> </option>
-                    <option th:value="REALISATEUR" th:text="REALISATEUR"> </option>
-                    </select></td>
+                     <label th:text="*{typePersonne}" id="typePersonne" class="form-control">
+<!--                    <option th:value="ACTEUR" th:text="ACTEUR" th:selected="ACTEUR"> </option>-->
+<!--                    <option th:value="REALISATEUR" th:text="REALISATEUR"> </option>-->
+                    </label></td>
                         </tr>
                         <tr><td>nationalite:</td>
                         <td> <label for="nationalite">Nationalité</label>
-                    <select th:field="*{nationalite}">
-                    <option th:each="nat : ${listeNationalites}"
-                        th:value="${nat.id}" th:text="${nat.libelle}"
-                        th:selected="(${nationalite} != null)?${nat.id} == ${nationalite.id} : false">
-    </option>
-</select></td>
+                    <label th:text="*{nationalite.libelle}" id="nationalite">
+<!--                    <option th:each="nat : ${listeNationalites}"-->
+<!--                        th:value="${nat.id}" th:text="${nat.libelle}"-->
+<!--                        th:selected="(${nationalite} != null)?${nat.id} == ${nationalite.id} : false">-->
+<!--    </option>-->
+</label></td>
                         </tr>
-                        <tr><td>liste film:</td>
-                        <td>asdfgh</td>
+                        <tr>
+
+
+                            <td>liste films:</td>
+                            <td >
+                                <div th:each="film : ${filmperson}" style="background-color: aliceblue">
+                                    <a th:href="${'/movies/details/' + film.id}" th:text="${film.titre}"></a>
+                                </div>
+                            
+                            </td>
                         </tr>
                         </table>
                         </div>
-        
+
     </form>
     </div>
 </body>

@@ -69,6 +69,7 @@ public class PersonneController {
         model.addAttribute("endIndex", end);
         model.addAttribute("currentIndex", current);
 
+
         return "personne/list";
 
     }
@@ -125,8 +126,11 @@ public class PersonneController {
     
     @GetMapping("/details/{id}")
     public String showDetails(@PathVariable Long id, Model model) {
+
         model.addAttribute("personne", personneService.get(id));
         model.addAttribute("listeNationalites", natService.getListAll());
+        model.addAttribute("filmperson",personneService.get(id).getFilmsRealises());
+
         return "personne/formdetail";
 
     }
