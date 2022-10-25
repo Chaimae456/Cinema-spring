@@ -111,7 +111,7 @@ public class PersonneController {
     	
     	Personne save = personneService.save(personne);
         ra.addFlashAttribute("successFlash", "Personne Ajoutée avec succès");
-        return "redirect:/co";
+        return "redirect:/personne";
 
     }
 
