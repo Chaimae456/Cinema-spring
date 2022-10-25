@@ -30,6 +30,7 @@ public class Salle extends AbstractModel<Long>{
     private int capacite;
     
     @OneToMany(mappedBy = "salle")
+    
     @JsonIgnore
 	private List<Seance> seances;
 

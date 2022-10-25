@@ -13,6 +13,12 @@
 			<li class="active">Ajouter Seance</li>
 		</ol>
 	</section>
+<!-- 		<div layout:fragment="content"> -->
+<!-- 		<div class="box"> -->
+<!-- 		<h1>hello</h1> -->
+<!-- 		</div> -->
+<!-- 		</div> -->
+	
 	<div layout:fragment="content">
 		<div class="box">
 			<div class="box-header with-border">
@@ -29,40 +35,40 @@
 			<div class="box-body">
 				<input type="hidden" th:field="*{id}" />
 				<div class="form-group">
-					<label for="dateProjection">Date de Projection</label> <input
-						type="date" value="1974-08-13" required="true"
-						class="form-control" th:field="*{}" id="dateNaissance" />
+					<label for="dateProjection">Date de Projection</label> 
+					<input type="date" value="1974-08-13" required="true" class="form-control" th:field="*{dateProjection}" id="dateNaissance" />
 				</div>
 				<div class="form-group">
-					<label for="dateProjection">Heur Debut</label> <input type="time"
-						value="14:54" required="true" class="form-control" th:field="*{}"
-						id="heurDebut" />
+					<label for="dateProjection">Heur Debut</label> 
+					<input type="time" value="14:54" required="true" class="form-control" th:field="*{heureDebut}" id="heurDebut" />
 				</div>
 				<div class="form-group">
-					<label for="dateProjection">Heur Debut</label> <input type="time"
-						value="14:34" required="true" class="form-control" th:field="*{}"
-						id="heurFin" />
+					<label for="dateProjection">Heur fin</label> 
+					<input type="time" value="14:34" required="true" class="form-control" th:field="*{heureFin}" id="heurFin" />
 				</div>
 <!-- 				<div class="form-group"> -->
 <!-- 					<label for="film">Film</label>  -->
-<!-- 					<select -->
-<!-- 						th:field="*{film}"> -->
-<!-- 						<option th:each="films : ${listeFilms}" th:value="${films.id}" -->
-<!-- 							th:text="${films.titre}" -->
-<!-- 							th:selected="(${film} != null)?${films.id} == ${film.id} : false"> -->
+<!-- 					<select th:field="*{film}"> -->
+<!-- 						<option th:each="films : ${listeFilms}" th:value="${films.id}" th:text="${films.titre}" -->
+<!-- 							th:selected="(${film} != null)?${films.id} == ${film.id} : false" > -->
+							
+							
 <!-- 						</option> -->
 <!-- 					</select> -->
 <!-- 				</div> -->
-<!-- 				<div class="form-group"> -->
-<!-- 					<label for="salle">Salle</label>  -->
-<!-- 					<select -->
-<!-- 						th:field="*{salle}"> -->
-<!-- 						<option th:each="salles : ${listeSalle}" th:value="${salles.id}" -->
-<!-- 							th:text="${salles.numero}" -->
-<!-- 							th:selected="(${salle} != null)?${salles.id} == ${salle.id} : false"> -->
-<!-- 						</option> -->
-<!-- 					</select> -->
-<!-- 				</div> -->
+
+
+
+
+
+				<div class="form-group">
+					<label for="salle">Salle</label> <select th:field="*{salle}">
+						<option th:each="salles : ${listeSalle}" th:value="${salles.id}"
+							th:text="${salles.numero}"
+							th:selected="(${salle} != null)?${salles.id} == ${salle.id} : false">
+						</option>
+					</select>
+				</div>
 
 
 
