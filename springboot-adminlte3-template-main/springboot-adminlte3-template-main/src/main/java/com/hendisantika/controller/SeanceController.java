@@ -6,11 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hendisantika.config.MovieService;
 import com.hendisantika.config.SalleService;
 import com.hendisantika.config.SeanceService;
+import com.hendisantika.entity.Film;
 import com.hendisantika.entity.Seance;
 
 @Controller
@@ -64,9 +67,18 @@ public class SeanceController {
     public String add(Model model) {
         model.addAttribute("seance", new Seance());
         System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
-      // model.addAttribute("listeFilms", salleservice.getListAll());
+      model.addAttribute("listeFilms", movieservice.getListAll());
       model.addAttribute("listeSalle", salleservice.getListAll());
         return "seance/form";
+
+    }
+    
+    @PostMapping(value = "/save")
+    public String save(Seance seance, final RedirectAttributes ra) {
+      System.out.println("ffffffffffffffffffffffffffffffffffffffffffffff");
+        Seance save = seanceservice.save(seance);
+        ra.addFlashAttribute("successFlash", "Movie Ajoutée avec succès");
+        return "redirect:/seance";
 
     }
     
