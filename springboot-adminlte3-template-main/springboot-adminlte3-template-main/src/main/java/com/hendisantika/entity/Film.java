@@ -31,6 +31,18 @@ public class Film extends AbstractModel<Long>{
     @Temporal(TemporalType.TIME)
     @DateTimeFormat(pattern = "HH:mm")
     private Date duree;
+	
+	
+	 @Column(nullable = true, length = 100)
+	    private String poster;
+	 
+	 
+	    @ManyToMany
+	    @JoinTable(
+	      name="FILM_ACTEUR",
+	      joinColumns=@JoinColumn(name="ACTOR_ID", referencedColumnName="ID"),
+	      inverseJoinColumns=@JoinColumn(name="FILM_ID", referencedColumnName="ID"))
+	    private List<Personne> acteur;
 
 	@Column(nullable = false)
     private int annee;
@@ -61,7 +73,5 @@ public class Film extends AbstractModel<Long>{
     
     @Column(name = "added_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Date addedDate;
-    
-    
     
 }

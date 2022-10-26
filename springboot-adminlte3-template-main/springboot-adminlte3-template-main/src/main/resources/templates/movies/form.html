@@ -52,12 +52,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-<!--                    <label th:text="${#lists.size(listeRealisateur)}"></label>-->
+<!--                    <label th:text="${#lists.size(listeRealisateur)}"></label> -->
+
                     <label for="genre">Genre</label>
                     <select th:field="*{genre}" id="genre" class="form-control">
                         <option th:each="gr : ${listeGenres}"
                                 th:value="${gr.id}" th:text="${gr.libelle}"
                                 th:selected="(${genre} != null)?${gr.id} == ${genre.id} : false">
+                                
                         </option>
                     </select>
                 </div>

@@ -106,6 +106,10 @@ public class MovieController {
 //        System.out.println(movie.getActeurs().size());
         Film save = movieService.save(movie);
         ra.addFlashAttribute("successFlash", "Movie Ajoutée avec succès");
+        
+        
+        
+        
         return "redirect:/movies";
 
     }

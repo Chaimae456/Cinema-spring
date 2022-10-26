@@ -3,8 +3,32 @@
       layout:decorate="~{shared/layout}">
 <head>
   <title>Clients</title>
+  <style>
+.column {
+    float: left;
+    width: 20%;
+    padding: 10px;
+}
+
+
+
+.column2 {
+    float: left;
+    width: 80%;
+    padding: 10px;
+}
+
+.card-acteur{
+float: left;
+    width: 30%;
+    padding: 10px;
+}
+</style>
+  
 </head>
 <body>
+ <form data-toggle="validator" role="form" th:object="${personne}"  th:action="@{/personne/save}" method="post"  enctype="multipart/form-data">
+    <input type="hidden" th:text="*{id}" />
 <section layout:fragment="header">
   <h1>Clients</h1>
   <ol class="breadcrumb">
@@ -13,38 +37,82 @@
   </ol>
 </section>
 <div layout:fragment="content">
-  <div class="box">
-    <div class="box-header with-border">
-      <h3 class="box-title">Liste des FILMS</h3>
-      <div class="box-tools pull-right">
-        <a href="/movies/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a>
-        <br clear="all"/>
-      </div>
-    </div>
-    <div class="box-body no-padding">
-      <label>titre :</label>
-      <label th:text="${movie.titre}"></label> <br>
 
-      <label>duree :</label>
-      <label th:text="${movie.duree}"></label><br>
+<div class="column">
+
+  <img th:src="kjhgfd"   class="profile-user-img img-responsive img-circle"
+                    alt="film poster">
+                    <br>
+              <div >      
+ <a href="/movies/add" type="button" class="btn btn-box-tool"><i class="fa fa-plus"></i></a> | 
+    <a th:href="${'/movies/edit/' + movie.id}"><i class="fa fa-edit"></i></a> |
+        <a th:href="${'/movies/delete/' + movie.id}"><i class="fa fa-trash"></i></a>
+ </div>
+ 
+ <br clear="all"/>
+
+ 
+      <h1 ><label th:text="${movie.titre}"></label> <br></h1>
+
+   <label>realise par  :</label>
+      <a th:href="${'/personne/details/' + movie.realisateur.id}" th:text="${movie.realisateur.nom+' '+movie.realisateur.prenom}"></a><br>
+ 
+
       <label>nationalite :</label>
       <label th:text="${movie.nationalite}"></label><br>
-      <label>Nom de realisateur :</label>
-      <label th:text="${movie.realisateur.nom+' '+movie.realisateur.prenom}"></label><br>
+    
       <label>Date Added :</label>
       <label th:text="${#dates.format(movie.addedDate, 'dd/MM/yyyy')}"></label> <br>
-      <label>Nom de realisateur :</label>
-      <a th:href="${'/personne/details/' + movie.realisateur.id}" th:text="${movie.realisateur.nom+' '+movie.realisateur.prenom}"></a><br>
+     
 
-      <div style="background-color: azure">
-        <div th:each="acteur : ${movie.acteurs}" style="background-color: aliceblue">
-          <a th:href="${'/personne/details/' + acteur.id}" th:text="${acteur.nom+' '+acteur.prenom}"></a>
-        </div>
-      </div>
-      <div>
-        <a th:href="${'/movies/edit/' + movie.id}"><i class="fa fa-edit"></i></a> |
-        <a th:href="${'/movies/delete/' + movie.id}"><i class="fa fa-trash"></i></a>
-      </div>
+
+
+</div>
+
+<div    class="column2" >
+  <div class="box">
+    <div class="box-header with-border">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="card-acteur">
+       <div th:each="acteur : ${movie.acteurs}" style="background-color: aliceblue">
+<div class="text-center">
+  <img th:src="@{*{photo}}"   class="profile-user-img img-responsive img-circle"
+                    alt="Actor/Director profile picture"> 
+</div>
+ <a th:href="${'/personne/details/' + acteur.id}" th:text="${acteur.nom+' '+acteur.prenom}"></a>
+<p class="text-muted text-center">Acteur</p>
+<ul class="list-group list-group-unbordered mb-3">
+<li class="list-group-item">
+<b>nationalite</b> <a class="float-right">1,322</a>
+</li>
+<li class="list-group-item">
+<b>date de naissance</b> <a class="float-right">543</a>
+</li>
+
+</ul>
+<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+</div>
+</div>
+
+
+
+
+</div>
+    
+      
+        
+    
+    </div>
+  
+     
 
 
 
@@ -52,5 +120,9 @@
 
   </div>
 </div>
+</div>
+</form>
 </body>
 </html>
+
+
